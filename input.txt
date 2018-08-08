@@ -1,0 +1,5 @@
+Team B 3, Team C 3
+Team A 1, Team E 0
+Team B 1, Team E 1
+Team A 3, Team C 1
+Team B 4, Team D 0
