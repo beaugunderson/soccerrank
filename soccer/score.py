@@ -30,8 +30,14 @@ class Score:
         # order is reverse for the points and then alphabetical for the name
         res = {}
         for k, i in sorted(self.results.items(), key=lambda info: (-1 * info[1][self.POINT], info[1][self.LABEL])):
-            res.update({k: i})
+            # more pythonic to set directly if just setting one key
+            res[k] = i
         return res
+
+        # but could also use a dictionary comprehension here:
+        # return {k: i for k, i in
+        #         sorted(self.results.items(),
+        #                key=lambda info: (-1 * info[1][self.POINT], info[1][self.LABEL]))}
 
     def display(self) -> str:
         res = []
