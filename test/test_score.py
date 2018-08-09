@@ -58,24 +58,28 @@ class TestScore(TestCase):
         exp = "1. D, 4 pts\n2. A, 3 pts\n3. C, 1 pt"
         self.assertEqual(exp, self.obj.display())
 
+        self.helper_add_match(self.team_a, 1, self.team_b, 2)
+        exp = "1. D, 4 pts\n2. A, 3 pts\n2. B, 3 pts\n4. C, 1 pt"
+        self.assertEqual(exp, self.obj.display())
+
     def test_rank(self):
         lines = []
         exp = ""
         self.assertEqual(exp, Score.rank(lines))
 
         lines = [
-            "Lions 3, Snakes 3",
-            "Tarantulas 1, FC Awesome 0",
-            "Lions 1, FC Awesome 1",
-            "Tarantulas 3, Snakes 1",
-            "Lions 4, Grouches 0",
+            "Team B 3, Team C 3",
+            "Team A 1, Team E 0",
+            "Team B 1, Team E 1",
+            "Team A 3, Team C 1",
+            "Team B 4, Team D 0",
         ]
         exp = "\n".join([
-            "1. Tarantulas, 6 pts",
-            "2. Lions, 5 pts",
-            "3. FC Awesome, 1 pt",
-            "4. Snakes, 1 pt",
-            "5. Grouches, 0 pts",
+            "1. Team A, 6 pts",
+            "2. Team B, 5 pts",
+            "3. Team C, 1 pt",
+            "3. Team E, 1 pt",
+            "5. Team D, 0 pts",
         ])
         self.assertEqual(exp, Score.rank(lines))
 

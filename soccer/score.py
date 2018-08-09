@@ -27,7 +27,7 @@ class Score:
 
     def sort_teams(self) -> Dict:
         # the info parameter is a list with the key at index 0 and the value at index 1
-        # order is reverse for the points and alphabetical for the name
+        # order is reverse for the points and then alphabetical for the name
         res = {}
         for k, i in sorted(self.results.items(), key=lambda info: (-1 * info[1][self.POINT], info[1][self.LABEL])):
             res.update({k: i})
@@ -36,10 +36,15 @@ class Score:
     def display(self) -> str:
         res = []
         idx = 0
+        rnk = 0
+        pnt = -1
         for k, v in self.sort_teams().items():
             idx += 1
-            end = '' if v[self.POINT] == 1 else 's'
-            res.append("%d. %s, %d pt%s" % (idx, v[self.LABEL], v[self.POINT], end))
+            if pnt != v[self.POINT]:
+                rnk = idx
+                pnt = v[self.POINT]
+            end = '' if pnt == 1 else 's'
+            res.append("%d. %s, %d pt%s" % (rnk, v[self.LABEL], pnt, end))
         return "\n".join(res)
 
     @staticmethod

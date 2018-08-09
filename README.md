@@ -10,6 +10,16 @@ It outputs the result via stdout to the console.
 The input contains results of games, one per line. 
 The output orders from most to least points, following the format 'rank. team, 0 pts'.
 
+```
+$>python3 soccer.py input.txt 
+1. Team A, 6 pts
+2. Team B, 5 pts
+3. Team C, 1 pt
+3. Team E, 1 pt
+5. Team D, 0 pts
+$>
+```
+
 
 ## The rules
 In this league, a tie is worth 1 point and a win is worth 3 points. A loss is worth 0 points. 
